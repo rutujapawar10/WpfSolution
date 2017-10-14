@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfDemoApp.Bindings.PersonBindingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoApp.Bindings"
+        mc:Ignorable="d"
+        Title="PersonBindingWindow" Height="300" Width="300">
+    <Grid>
+        <Canvas>
+            <TextBlock Canvas.Left="30" Canvas.Top="50">Name</TextBlock>
+            <Border Canvas.Left="100" Canvas.Top="50" BorderBrush="Black" BorderThickness="1">
+                <TextBox  Width="100" x:Name="txtName" Text="{Binding Name}"></TextBox>
+            </Border>
+            <TextBlock Canvas.Left="30" Canvas.Top="90">Age</TextBlock>
+            <Border Canvas.Left="100" Canvas.Top="90" BorderBrush="Black" BorderThickness="1">
+                <TextBox Width="100" x:Name="txtAge" Text="{Binding Age}"></TextBox>
+            </Border>
+            <Button Canvas.Left="30" Canvas.Top="140" Width="80" x:Name="btnShow" Click="btnShow_Click">Show</Button>
+            <Button Canvas.Left="130" Canvas.Top="140" Width="80" x:Name="btnAssign" Click="btnAssign_Click">
+                <AccessText>_Assign</AccessText>
+            </Button>
+        </Canvas>
+    </Grid>
+</Window>

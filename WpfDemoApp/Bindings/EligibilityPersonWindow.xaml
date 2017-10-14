@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfDemoApp.Bindings.EligibilityPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoApp.Bindings"
+        xmlns:conv="clr-namespace:WpfDemoApp.Converters"
+        mc:Ignorable="d"
+        Title="EligibilityPersonWindow" Height="300" Width="300">
+    <Window.Resources>
+        <local:Person Age="9"   x:Key="PersonObject"></local:Person>
+        <conv:EligibillityConverters x:Key="EEC"></conv:EligibillityConverters>
+    </Window.Resources>
+    <Grid>
+        <Canvas>
+            <TextBlock Canvas.Left="30" Canvas.Top="50">Name</TextBlock>
+            <Border Canvas.Left="100" Canvas.Top="50" BorderBrush="Black" BorderThickness="1">
+                <TextBox  Width="100" x:Name="txtName" Text="{Binding Name}"></TextBox>
+            </Border>
+            <TextBlock Canvas.Left="30" Canvas.Top="90">Age</TextBlock>
+            <Border Canvas.Left="100" Canvas.Top="90" BorderBrush="Black" BorderThickness="1">
+                <TextBox Width="100" x:Name="txtAge" Text="{Binding Age}"></TextBox>
+            </Border>
+            <StackPanel Orientation="Horizontal" Margin="0,150,0,0">
+
+                <TextBlock Text="Eligible: " Style="{StaticResource RDisplayTextBlock }" ></TextBlock>
+                <TextBlock Text="{Binding Age,Converter={StaticResource EEC}}" Style="{StaticResource LDisplayTextBlock }" ></TextBlock>
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</Window>

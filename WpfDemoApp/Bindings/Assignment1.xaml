@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfDemoApp.Bindings.Assignment1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoApp.Bindings"
+        mc:Ignorable="d"
+        Title="Assignment1" Height="300" Width="300"  >
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="UserTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <Border Style="{StaticResource CoralBorder}">
+                        <TextBlock Text="{Binding Username}" Style="{StaticResource LDisplayTextBlock}"/>
+                    </Border>
+                    <Border Style="{StaticResource BlackBorder}">
+                        <TextBlock Text="{Binding Age}" Style="{StaticResource RDisplayTextBlock}"/>
+                    </Border>
+                    <Border Style="{StaticResource CoralBorder}">
+                        <TextBlock Text="{Binding Favcolor}" Style="{StaticResource LDisplayTextBlock}" TextAlignment="Center"/>
+                    </Border>
+                    <Border Style="{StaticResource CoralBorder}">
+                        <TextBlock Background="{Binding Favcolor}" Text="{Binding Favcolor}"/>
+                    </Border>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" >
+            <StackPanel  Orientation="Horizontal">
+                <TextBlock Text="UserName :" Height="25" Width="100" TextAlignment="Right" Padding="0,4,0,0"></TextBlock>
+                <TextBox x:Name="txtUserName" Height="25" Width="160" Margin="10,5" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Age :" Height="25" Width="100" TextAlignment="Right" Padding="0,4,0,0"></TextBlock>
+                <TextBox x:Name="txtAge" Height="25" Width="160" Margin="10,5" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="FavColor :" Height="25" Width="100" TextAlignment="Right" Padding="0,4,0,0"></TextBlock>
+                <TextBox x:Name="txtFavColor" Height="25" Width="160" Margin="10,5" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="btnAddUser" Height="25" Width="100" Margin="10,5"  HorizontalAlignment="Center" Click="btnAddUser_Click">
+                    <AccessText>_Add New User</AccessText>
+                    <!--To Add Hot key ALT+?-->
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <ListBox Grid.Row="1" Margin="5" MinHeight="120" ItemsSource="{Binding}" ItemTemplate="{StaticResource UserTemplate}" IsSynchronizedWithCurrentItem="True" ></ListBox>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="UserName :" Height="25" Width="60" TextAlignment="Right" Padding="0,4,0,0"></TextBlock>
+            <TextBox x:Name="txtUserName1" Height="25" Width="100" Margin="0,4,0,0" ></TextBox>
+            <TextBlock Text="Age :" Height="25" Width="30" TextAlignment="Right" Padding="0,4,0,0"></TextBlock>
+            <TextBox x:Name="txtAge1" Height="25" Width="50" Margin="10,5" ></TextBox>
+            <TextBlock Text="FavColor :" Height="25" Width="60" TextAlignment="Right" Padding="0,4,0,0"></TextBlock>
+            <TextBox x:Name="txtFavColor1" Height="25" Width="160" Margin="10,5" ></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
